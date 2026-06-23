@@ -443,10 +443,10 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="javascript:void(0)" onclick="smoothScroll('about')">אודות</a>
-  <a href="javascript:void(0)" onclick="smoothScroll('pricing')">מחירון</a>
-  <a href="javascript:void(0)" onclick="smoothScroll('reviews')">ביקורות</a>
-  <a href="javascript:void(0)" onclick="smoothScroll('contact')">צור קשר</a>
+  <a href="#about" onclick="mobileScroll(event,'about')">אודות</a>
+  <a href="#pricing" onclick="mobileScroll(event,'pricing')">מחירון</a>
+  <a href="#reviews" onclick="mobileScroll(event,'reviews')">ביקורות</a>
+  <a href="#contact" onclick="mobileScroll(event,'contact')">צור קשר</a>
   <a href="https://wa.me/972538202506?text=היי סתיו, אשמח לשמוע על אימון ניסיון!" target="_blank" onclick="closeMenu()">קבעו אימון ניסיון</a>
 </div>
 
@@ -766,6 +766,14 @@
   function smoothScroll(id) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     closeMenu();
+  }
+
+  function mobileScroll(e, id) {
+    e.preventDefault();
+    closeMenu();
+    setTimeout(function() {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
   }
 
   // Mobile menu
