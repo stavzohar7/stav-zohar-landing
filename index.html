@@ -480,7 +480,7 @@
     var saveTotal = totalOverride ? (base * qty - totalOverride) : (savePer * qty);
     var pct = Math.round((savePer / base) * 100);
     info.querySelector('.save-percent').textContent = 'חיסכון של ' + pct + '%';
-    info.querySelector('.save-amount').textContent = 'חוסכים ' + saveTotal + '₪ לעומת אימון בודד';
+    info.querySelector('.save-amount').textContent = 'חוסכים ' + saveTotal + '₪';
     info.classList.add('open');
   }
 
