@@ -52,7 +52,7 @@
       display: flex; align-items: center; justify-content: space-between; height: 60px;
     }
     .nav-brand { display: flex; align-items: center; gap: 0.6rem; }
-    .nav-logo { height: 40px; width: 40px; object-fit: contain; border-radius: 0; background: transparent; }
+    .nav-logo { height: 44px; width: 44px; object-fit: contain; border-radius: 0; background: transparent; border: none; box-shadow: none; }
     .nav-name { font-weight: 700; font-size: 1rem; }
     .nav-links { display: flex; align-items: center; gap: 0.3rem; }
     .nav-link {
@@ -91,7 +91,7 @@
     /* HERO */
     .hero { padding: 7.5rem 1.5rem 4rem; text-align: center; }
     .hero-inner { max-width: 600px; margin: 0 auto; }
-    .hero-logo { height: 130px; margin: 0 auto 1.75rem; object-fit: contain; }
+    .hero-logo { height: 130px; margin: 0 auto 1.75rem; object-fit: contain; border-radius: 0; background: transparent; border: none; box-shadow: none; }
     .hero-tag {
       display: inline-block; padding: 0.3rem 0.9rem; border-radius: 20px;
       font-size: 0.8rem; font-weight: 600; color: var(--green-light);
@@ -428,13 +428,13 @@
         <div class="step-num">01</div>
         <div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
         <h3>שיחת ייעוץ</h3>
-        <p>נכיר את המטרות שלך ונבדוק התאמה.</p>
+        <p>נכיר אותך ואת המטרות שלך ונבדוק התאמה לתהליך.</p>
       </div>
       <div class="process-step reveal">
         <div class="step-num">02</div>
         <div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div>
         <h3>בניית תוכנית</h3>
-        <p>נבנה תוכנית אימונים מותאמת אישית.</p>
+        <p>נבנה תוכנית אימונים מותאמת אישית אליך.</p>
       </div>
       <div class="process-step reveal">
         <div class="step-num">03</div>
@@ -552,23 +552,23 @@
     <div class="faq-list">
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">אין לי ניסיון באימונים, זה מתאים לי?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="faq-a"><p>בהחלט. התוכנית נבנית לפי הרמה שלך, גם אם אתה מתחיל לגמרי. אני מלווה אותך צעד אחרי צעד.</p></div>
+        <div class="faq-a"><p>בהחלט. רוב המתאמנים שלי התחילו בלי שום רקע באימוני כוח. התוכנית נבנית בדיוק לפי הרמה שלך, אני מלמד אותך טכניקה נכונה מהאימון הראשון ומתקדם איתך בקצב שמתאים לך.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">איפה מתקיימים האימונים?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="faq-a"><p>האימונים מתקיימים בחדרי כושר באזור המרכז. נתאם מיקום שנוח לך.</p></div>
+        <div class="faq-a"><p>האימונים מתקיימים בחדרי כושר באזור חיפה והקריות. נתאם מיקום שנוח לך ומתאים ללוח הזמנים שלך.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">מה כולל הליווי האישי?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="faq-a"><p>תוכנית אימונים מותאמת, הנחיות תזונה, מעקב שבועי ותמיכה שוטפת — הכל אונליין, בלי צורך להגיע פיזית.</p></div>
+        <div class="faq-a"><p>הליווי האישי כולל תוכנית אימונים מותאמת שמתעדכנת כל חודש, הנחיות תזונה מפורטות, מעקב שבועי אחרי ההתקדמות שלך, ותמיכה שוטפת בוואטסאפ לכל שאלה. הכל אונליין, בלי צורך להגיע פיזית.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">אפשר לבטל חבילה באמצע?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="faq-a"><p>כן, אין התחייבות לטווח ארוך. אפשר להפסיק בכל שלב.</p></div>
+        <div class="faq-a"><p>כן, אין שום התחייבות לטווח ארוך. אם מסיבה כלשהי אתה רוצה להפסיק, אפשר לעשות את זה בכל שלב בלי שאלות מיותרות. האימונים שנשארו בחבילה לא נעלמים.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">תוך כמה זמן רואים תוצאות?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="faq-a"><p>זה תלוי במטרה ובעקביות, אבל רוב המתאמנים שלי מרגישים שינוי תוך 3-4 שבועות ורואים תוצאות ברורות תוך חודשיים.</p></div>
+        <div class="faq-a"><p>זה תלוי במטרה ובעקביות, אבל רוב המתאמנים שלי מרגישים שינוי משמעותי בכוח ובאנרגיה כבר תוך 3-4 שבועות. תוצאות ברורות בהרכב הגוף, במשקל ובמראה מגיעות בדרך כלל תוך חודשיים-שלושה של עבודה עקבית.</p></div>
       </div>
     </div>
   </div>
@@ -598,13 +598,13 @@
           <img src="logo.jpeg" alt="סתיו זוהר" class="footer-logo" />
           <span class="footer-name">סתיו זוהר</span>
         </div>
-        <p class="footer-tagline">מאמן כושר אישי באזור המרכז.<br>אימוני כוח, ירידה במשקל ובניית מסת שריר.</p>
+        <p class="footer-tagline">מאמן כושר אישי באזור הצפון.<br>אימוני כוח, ירידה במשקל ובניית מסת שריר.</p>
       </div>
       <div class="footer-col">
         <h4>צור קשר</h4>
         <ul class="footer-info">
           <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:0538202506" style="color:inherit;">0538202506</a></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>אזור המרכז</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>חיפה והקריות</li>
           <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>א׳–ה׳ 7:00–21:00</li>
         </ul>
       </div>
