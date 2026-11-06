@@ -347,13 +347,124 @@
 
     /* WA */
     .wa-float {
-      position: fixed; bottom: 1.25rem; left: 1.25rem; z-index: 90;
-      width: 50px; height: 50px; border-radius: 50%;
+      position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 90;
+      width: 56px; height: 56px; border-radius: 50%;
       background: #25d366; display: flex; align-items: center; justify-content: center;
       box-shadow: 0 3px 12px rgba(37,211,102,0.25); transition: transform 0.2s;
     }
     .wa-float:hover { transform: scale(1.08); }
-    .wa-float svg { width: 25px; height: 25px; color: #fff; }
+    .wa-float svg { width: 28px; height: 28px; color: #fff; }
+    .wa-float .wa-dot {
+      position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; border-radius: 50%;
+      background: #ff3b30; border: 2px solid var(--bg);
+    }
+
+    .wa-teaser {
+      position: fixed; bottom: 5.4rem; right: 1.25rem; z-index: 90; max-width: 250px;
+      background: #fff; color: #111; border-radius: 14px 14px 4px 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35); animation: waPop 0.3s ease;
+    }
+    .wa-teaser[hidden] { display: none; }
+    .wa-teaser-body { padding: 0.75rem 1rem; font-size: 0.9rem; font-weight: 500; color: #111; text-align: right; }
+    .wa-teaser-close {
+      position: absolute; top: -8px; left: -8px; width: 22px; height: 22px; border-radius: 50%;
+      background: #fff; color: #555; font-size: 0.9rem; line-height: 1; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+
+    .wa-chat {
+      position: fixed; bottom: 5.4rem; right: 1.25rem; z-index: 95;
+      width: min(360px, calc(100vw - 2rem)); border-radius: 14px; overflow: hidden;
+      background: #efeae2; color: #111; box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+      display: flex; flex-direction: column; animation: waPop 0.25s ease;
+    }
+    .wa-chat[hidden] { display: none; }
+    @keyframes waPop {
+      from { opacity: 0; transform: translateY(10px) scale(0.97); }
+      to   { opacity: 1; transform: none; }
+    }
+    .wa-head { display: flex; align-items: center; gap: 0.65rem; padding: 0.65rem 0.85rem; background: #008069; color: #fff; }
+    .wa-head img { width: 42px; height: 42px; border-radius: 50%; }
+    .wa-name { font-weight: 700; font-size: 1rem; line-height: 1.2; }
+    .wa-status { font-size: 0.78rem; opacity: 0.9; }
+    .wa-close { margin-right: auto; color: #fff; font-size: 1.5rem; line-height: 1; padding: 0 0.3rem; }
+    .wa-body {
+      height: 290px; overflow-y: auto; padding: 0.9rem 0.75rem;
+      display: flex; flex-direction: column; gap: 0.45rem;
+    }
+    .wa-msg {
+      max-width: 82%; padding: 0.45rem 0.7rem 0.3rem; border-radius: 8px; font-size: 0.9rem;
+      line-height: 1.5; box-shadow: 0 1px 1px rgba(0,0,0,0.12); white-space: pre-line;
+      animation: waPop 0.2s ease;
+    }
+    .wa-msg.bot { align-self: flex-start; background: #fff; border-top-right-radius: 0; }
+    .wa-msg.me { align-self: flex-end; background: #d9fdd3; border-top-left-radius: 0; }
+    .wa-time { display: block; text-align: left; font-size: 0.66rem; color: #667781; margin-top: 0.1rem; }
+    .wa-typing { display: flex; gap: 4px; padding: 0.7rem 0.8rem; }
+    .wa-typing span { width: 7px; height: 7px; border-radius: 50%; background: #999; animation: waBlink 1s infinite; }
+    .wa-typing span:nth-child(2) { animation-delay: 0.15s; }
+    .wa-typing span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes waBlink { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 1; } }
+    .wa-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0 0.75rem 0.6rem; }
+    .wa-chips:empty { display: none; }
+    .wa-chip {
+      padding: 0.4rem 0.8rem; border-radius: 999px; font-size: 0.84rem; font-weight: 600;
+      background: #fff; color: #008069; border: 1.5px solid #008069; transition: all 0.15s;
+    }
+    .wa-chip:hover { background: #008069; color: #fff; }
+    .wa-chip.solid { background: #25d366; border-color: #25d366; color: #fff; }
+    .wa-input { display: flex; gap: 0.5rem; padding: 0.55rem 0.65rem; background: #f0f2f5; }
+    .wa-input[hidden] { display: none; }
+    .wa-input input {
+      flex: 1; min-width: 0; border: none; border-radius: 20px; padding: 0.6rem 0.9rem;
+      font: inherit; font-size: 0.92rem; background: #fff; color: #111; outline: none;
+    }
+    .wa-input button {
+      width: 42px; height: 42px; border-radius: 50%; background: #008069; color: #fff;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .wa-input button svg { width: 19px; height: 19px; transform: scaleX(-1); }
+
+    /* NAV PHONE */
+    .nav-phone {
+      display: flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.6rem;
+      font-size: 0.88rem; font-weight: 700; color: var(--green-light);
+    }
+    .nav-phone svg { width: 15px; height: 15px; }
+    .nav-phone-mobile { display: none; }
+    @media (max-width: 768px) {
+      .nav-phone-mobile {
+        display: flex; align-items: center; justify-content: center; width: 38px; height: 38px;
+        border-radius: 50%; background: var(--green-dim); color: var(--green-light); margin-left: 0.5rem; margin-right: auto;
+      }
+      .nav-phone-mobile svg { width: 18px; height: 18px; }
+    }
+
+    /* ACCESSIBILITY */
+    .a11y-btn {
+      position: fixed; bottom: 1.25rem; left: 1.25rem; z-index: 90;
+      width: 46px; height: 46px; border-radius: 50%; background: #1d63c9; color: #fff;
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+    }
+    .a11y-btn svg { width: 26px; height: 26px; }
+    .a11y-panel {
+      position: fixed; bottom: 4.6rem; left: 1.25rem; z-index: 95; width: 230px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 0.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+    .a11y-panel[hidden] { display: none; }
+    .a11y-panel h4 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .a11y-panel button {
+      display: block; width: 100%; text-align: right; padding: 0.5rem 0.65rem; margin-bottom: 0.3rem;
+      border-radius: 8px; font-size: 0.85rem; color: var(--text); background: var(--surface-2);
+    }
+    .a11y-panel button[aria-pressed="true"] { background: #1d63c9; color: #fff; }
+    html.a11y-contrast {
+      --bg: #000; --bg-alt: #000; --surface: #000; --surface-2: #1a1a1a;
+      --text: #fff; --text-2: #fff; --text-3: #e6e6e6; --border: #fff; --green-light: #7dffc4;
+    }
+    html.a11y-links a { text-decoration: underline !important; text-underline-offset: 3px; }
+    html.a11y-still *, html.a11y-still *::before, html.a11y-still *::after { animation: none !important; transition: none !important; }
+    html.a11y-still .reveal { opacity: 1; transform: none; }
 
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -381,8 +492,10 @@
       <button class="nav-link" onclick="smoothScroll('pricing')">מחירון</button>
       <button class="nav-link" onclick="smoothScroll('reviews')">ביקורות</button>
       <button class="nav-link" onclick="smoothScroll('contact')">צור קשר</button>
+      <a href="tel:0538202506" class="nav-phone" dir="ltr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>053-820-2506</a>
       <a href="https://wa.me/972538202506?text=היי סתיו, אשמח לשמוע על אימון ניסיון!" target="_blank" class="nav-cta">אימון ניסיון</a>
     </div>
+    <a href="tel:0538202506" class="nav-phone-mobile" aria-label="התקשרו 053-820-2506"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
     <button class="hamburger" onclick="toggleMenu()" aria-label="תפריט"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -596,7 +709,7 @@
     <h2>מוכנים להתחיל?</h2>
     <p>השאירו פרטים ואחזור אליכם תוך 24 שעות לבדיקת התאמה אישית ללא התחייבות.</p>
     <div class="cta-btns">
-      <a href="https://wa.me/972538202506?text=היי סתיו! אשמח לשמוע על אימונים" target="_blank" class="btn btn-primary">שלחו הודעה בוואטסאפ</a>
+      <button type="button" onclick="openChat()" class="btn btn-primary">השאירו פרטים</button>
       <a href="tel:0538202506" class="btn btn-outline">התקשרו עכשיו — 0538202506</a>
     </div>
     <div class="cta-trust">
@@ -638,9 +751,45 @@
   </div>
 </footer>
 
-<a href="https://wa.me/972538202506" target="_blank" class="wa-float" aria-label="WhatsApp">
+<div class="wa-teaser" id="waTeaser" hidden>
+  <button class="wa-teaser-close" onclick="hideTeaser()" aria-label="סגור">×</button>
+  <button class="wa-teaser-body" onclick="openChat()">היי 👋 יש לך שאלה? אני כאן לעזור!</button>
+</div>
+
+<button class="wa-float" id="waFloat" onclick="toggleChat()" aria-label="צ'אט וואטסאפ עם סתיו" aria-expanded="false" aria-controls="waChat">
   <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-</a>
+  <span class="wa-dot" id="waDot" hidden></span>
+</button>
+
+<div class="wa-chat" id="waChat" role="dialog" aria-label="צ'אט עם סתיו" hidden>
+  <div class="wa-head">
+    <img src="favicon.png" alt="" />
+    <div>
+      <div class="wa-name">סתיו זוהר</div>
+      <div class="wa-status" id="waStatus">מחובר/ת</div>
+    </div>
+    <button class="wa-close" onclick="closeChat()" aria-label="סגור">×</button>
+  </div>
+  <div class="wa-body" id="waBody" aria-live="polite"></div>
+  <div class="wa-chips" id="waChips"></div>
+  <form class="wa-input" id="waForm" hidden>
+    <input id="waInput" autocomplete="off" />
+    <button type="submit" aria-label="שלח"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+  </form>
+</div>
+
+<button class="a11y-btn" onclick="toggleA11y()" aria-label="תפריט נגישות" aria-expanded="false" aria-controls="a11yPanel" id="a11yBtn">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4" r="2"/><path d="M21 9h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
+</button>
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="הגדרות נגישות" hidden>
+  <h4>נגישות</h4>
+  <button onclick="a11yFont(1)">הגדלת טקסט +</button>
+  <button onclick="a11yFont(-1)">הקטנת טקסט −</button>
+  <button data-a11y="contrast" aria-pressed="false" onclick="a11yToggle('contrast')">ניגודיות גבוהה</button>
+  <button data-a11y="links" aria-pressed="false" onclick="a11yToggle('links')">הדגשת קישורים</button>
+  <button data-a11y="still" aria-pressed="false" onclick="a11yToggle('still')">עצירת אנימציות</button>
+  <button onclick="a11yReset()">איפוס</button>
+</div>
 
 <script>
   function smoothScroll(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); }
@@ -669,6 +818,176 @@
     info.querySelector('.save-amount').textContent = 'חוסכים ' + saveTotal + '₪';
     info.classList.add('open');
   }
+
+  // ── WhatsApp-style chat: collects interest, name and phone, then opens WhatsApp to Stav with it all filled in ──
+  var WA_NUMBER = '972538202506';
+  var chat = { started: false, step: '', interest: '', name: '' };
+  var waBody = document.getElementById('waBody');
+  var waChips = document.getElementById('waChips');
+  var waForm = document.getElementById('waForm');
+  var waInput = document.getElementById('waInput');
+
+  function store(key, val) {
+    try { if (val === undefined) return sessionStorage.getItem(key); sessionStorage.setItem(key, val); } catch (e) { return null; }
+  }
+  function nowTime() { var d = new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+
+  function addMsg(text, who) {
+    var el = document.createElement('div');
+    el.className = 'wa-msg ' + who;
+    el.textContent = text;
+    var t = document.createElement('span');
+    t.className = 'wa-time';
+    t.textContent = nowTime();
+    el.appendChild(t);
+    waBody.appendChild(el);
+    waBody.scrollTop = waBody.scrollHeight;
+  }
+
+  function botSay(text, then) {
+    var status = document.getElementById('waStatus');
+    status.textContent = 'מקליד/ה...';
+    var typing = document.createElement('div');
+    typing.className = 'wa-msg bot wa-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    waBody.appendChild(typing);
+    waBody.scrollTop = waBody.scrollHeight;
+    setTimeout(function() {
+      typing.remove();
+      status.textContent = 'מחובר/ת';
+      addMsg(text, 'bot');
+      if (then) then();
+    }, 900);
+  }
+
+  function showChips(options, onPick) {
+    waChips.innerHTML = '';
+    options.forEach(function(opt) {
+      var b = document.createElement('button');
+      b.className = 'wa-chip';
+      b.type = 'button';
+      b.textContent = opt;
+      b.onclick = function() { waChips.innerHTML = ''; addMsg(opt, 'me'); onPick(opt); };
+      waChips.appendChild(b);
+    });
+  }
+
+  function askInput(step, placeholder, type) {
+    chat.step = step;
+    waInput.value = '';
+    waInput.placeholder = placeholder;
+    waInput.type = type || 'text';
+    waInput.inputMode = type === 'tel' ? 'tel' : 'text';
+    waForm.hidden = false;
+    waInput.focus();
+  }
+
+  function startChat() {
+    chat.started = true;
+    botSay('היי! כאן סתיו 👋\nאשמח לעזור לך להתחיל.', function() {
+      botSay('על מה תרצה/י לשמוע?', function() {
+        showChips(['אימון אישי', 'אימון זוגי', 'ליווי אישי אונליין', 'יש לי שאלה'], function(pick) {
+          chat.interest = pick;
+          botSay('מעולה! איך קוראים לך?', function() { askInput('name', 'השם שלך'); });
+        });
+      });
+    });
+  }
+
+  function normalizePhone(raw) {
+    var d = raw.replace(/\D/g, '');
+    if (d.indexOf('972') === 0) d = '0' + d.slice(3);
+    return /^05\d{8}$/.test(d) ? d.slice(0, 3) + '-' + d.slice(3) : null;
+  }
+
+  function sendToWhatsApp(phone) {
+    var text = 'היי סתיו! הגעתי מהאתר 🙂\nשם: ' + chat.name + '\nמתעניין/ת ב: ' + chat.interest + '\nנייד: ' + phone;
+    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+
+  waForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var val = waInput.value.trim();
+    if (!val) return;
+    if (chat.step === 'name') {
+      chat.name = val;
+      waForm.hidden = true;
+      addMsg(val, 'me');
+      botSay('נעים מאוד ' + val + '!\nהשאר/י מספר נייד ואחזור אליך בוואטסאפ 📲', function() { askInput('phone', 'מספר נייד', 'tel'); });
+    } else if (chat.step === 'phone') {
+      var phone = normalizePhone(val);
+      addMsg(val, 'me');
+      if (!phone) {
+        waForm.hidden = true;
+        botSay('נראה שהמספר לא תקין 🤔\nנסה/י שוב, לדוגמה 050-1234567', function() { askInput('phone', 'מספר נייד', 'tel'); });
+        return;
+      }
+      waForm.hidden = true;
+      chat.step = 'done';
+      var url = sendToWhatsApp(phone);
+      window.open(url, '_blank');
+      botSay('תודה ' + chat.name + '! 🙌\nפתחתי לך וואטסאפ עם הפרטים — רק ללחוץ "שלח" ואחזור אליך בהקדם.', function() {
+        var a = document.createElement('a');
+        a.className = 'wa-chip solid';
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'לא נפתח? לחצו כאן לשליחה בוואטסאפ';
+        waChips.innerHTML = '';
+        waChips.appendChild(a);
+      });
+    }
+  });
+
+  function openChat() {
+    hideTeaser();
+    document.getElementById('waChat').hidden = false;
+    document.getElementById('waFloat').setAttribute('aria-expanded', 'true');
+    document.getElementById('waDot').hidden = true;
+    if (!chat.started) startChat();
+    else if (!waForm.hidden) waInput.focus();
+  }
+  function closeChat() {
+    document.getElementById('waChat').hidden = true;
+    document.getElementById('waFloat').setAttribute('aria-expanded', 'false');
+  }
+  function toggleChat() { document.getElementById('waChat').hidden ? openChat() : closeChat(); }
+  function hideTeaser() { document.getElementById('waTeaser').hidden = true; store('waTeaserSeen', '1'); }
+
+  // Gentle nudge after a few seconds, once per visit
+  setTimeout(function() {
+    if (chat.started || store('waTeaserSeen')) return;
+    document.getElementById('waTeaser').hidden = false;
+    document.getElementById('waDot').hidden = false;
+  }, 7000);
+
+  // ── Accessibility menu ──
+  var a11y = { font: 0, contrast: false, links: false, still: false };
+  try { Object.assign(a11y, JSON.parse(localStorage.getItem('a11y') || '{}')); } catch (e) {}
+  function applyA11y() {
+    document.documentElement.style.fontSize = a11y.font ? (100 + a11y.font * 10) + '%' : '';
+    ['contrast', 'links', 'still'].forEach(function(k) {
+      document.documentElement.classList.toggle('a11y-' + k, !!a11y[k]);
+      var b = document.querySelector('[data-a11y="' + k + '"]');
+      if (b) b.setAttribute('aria-pressed', a11y[k] ? 'true' : 'false');
+    });
+    try { localStorage.setItem('a11y', JSON.stringify(a11y)); } catch (e) {}
+  }
+  function toggleA11y() {
+    var p = document.getElementById('a11yPanel');
+    p.hidden = !p.hidden;
+    document.getElementById('a11yBtn').setAttribute('aria-expanded', p.hidden ? 'false' : 'true');
+  }
+  function a11yFont(dir) { a11y.font = Math.max(-1, Math.min(4, a11y.font + dir)); applyA11y(); }
+  function a11yToggle(k) { a11y[k] = !a11y[k]; applyA11y(); }
+  function a11yReset() { a11y = { font: 0, contrast: false, links: false, still: false }; applyA11y(); }
+  applyA11y();
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    closeChat();
+    document.getElementById('a11yPanel').hidden = true;
+  });
 
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
