@@ -105,7 +105,7 @@
     }
     .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
 
-    .hero-rotator { display: grid; margin-bottom: 0.75rem; }
+    .hero-rotator { display: grid; margin-bottom: 1.25rem; }
     .hero-slide {
       grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
       opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease;
@@ -118,12 +118,6 @@
       font-weight: 900; background: linear-gradient(90deg, #2fcf9a, #83e0b8 50%, #2fcf9a);
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .hero-dots { display: flex; gap: 0.45rem; justify-content: center; margin-bottom: 1.5rem; }
-    .hero-dots button {
-      width: 8px; height: 8px; border-radius: 999px; background: var(--surface-2);
-      transition: all 0.3s; padding: 0;
-    }
-    .hero-dots button.active { width: 24px; background: #2fcf9a; }
     .hero-logo { height: 130px; margin: 0 auto 1.75rem; object-fit: contain; border-radius: 0; background: transparent; border: none; box-shadow: none; }
     .hero-tag {
       display: inline-block; padding: 0.3rem 0.9rem; border-radius: 20px;
@@ -583,7 +577,6 @@
       <span class="hero-slide"><span class="l1">כל מסע מתחיל</span><span class="l2">באימון הראשון</span></span>
       <span class="hero-slide"><span class="l1">חזקים יותר, בריאים יותר</span><span class="l2">בקצב שמתאים לכם</span></span>
     </h1>
-    <div class="hero-dots" id="heroDots"></div>
     <p>אני עוזר לאנשים להגיע לגוף ולבריאות שהם רוצים — עם אימון מקצועי, תוכנית מותאמת ומעקב צמוד.</p>
     <div class="hero-btns">
       <a href="https://wa.me/972538202506?text=היי סתיו, אשמח לשמוע על אימון ניסיון!" target="_blank" class="btn btn-primary">קבעו אימון ניסיון</a>
@@ -897,18 +890,9 @@
   // ── Rotating hero headlines ──
   (function() {
     var slides = document.querySelectorAll('#heroRotator .hero-slide');
-    var dots = document.getElementById('heroDots');
-    var current = 0, timer;
-    slides.forEach(function(s, i) {
-      if (i > 0) s.setAttribute('aria-hidden', 'true');
-      var d = document.createElement('button');
-      d.type = 'button';
-      d.setAttribute('aria-label', 'משפט ' + (i + 1));
-      d.onclick = function() { go(i); restart(); };
-      dots.appendChild(d);
-    });
+    var current = 0;
+    slides.forEach(function(s, i) { if (i > 0) s.setAttribute('aria-hidden', 'true'); });
     function go(n) {
-      if (n === current) return;
       var prev = slides[current];
       prev.classList.remove('active');
       prev.classList.add('leaving');
@@ -917,18 +901,11 @@
       current = n;
       slides[n].classList.add('active');
       slides[n].removeAttribute('aria-hidden');
-      paint();
     }
-    function paint() { [].forEach.call(dots.children, function(d, i) { d.classList.toggle('active', i === current); }); }
-    function restart() {
-      clearInterval(timer);
-      timer = setInterval(function() {
-        if (document.documentElement.classList.contains('a11y-still')) return;
-        go((current + 1) % slides.length);
-      }, 4000);
-    }
-    paint();
-    restart();
+    setInterval(function() {
+      if (document.documentElement.classList.contains('a11y-still')) return;
+      go((current + 1) % slides.length);
+    }, 4000);
   })();
 
   // ── WhatsApp-style chat: collects interest, name and phone, then opens WhatsApp to Stav with it all filled in ──
