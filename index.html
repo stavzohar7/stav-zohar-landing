@@ -315,16 +315,36 @@
 
     /* REVIEWS */
     #reviews { background: var(--bg-alt); }
-    .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-    @media (min-width: 700px) { .reviews-grid { grid-template-columns: repeat(3, 1fr); } }
+    .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 700px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
     .review-card {
-      background: var(--surface); border-radius: 14px; padding: 1.5rem;
-      border: 1px solid var(--border);
+      position: relative; display: flex; flex-direction: column;
+      background: linear-gradient(160deg, var(--surface) 0%, var(--bg) 100%);
+      border-radius: 16px; padding: 1.75rem 1.6rem 1.4rem; border: 1px solid var(--border);
+      transition: border-color 0.25s, transform 0.25s;
     }
-    .stars { display: flex; gap: 2px; margin-bottom: 0.7rem; }
-    .stars svg { width: 15px; height: 15px; color: #e8a830; fill: #e8a830; }
-    .review-card blockquote { font-size: 0.88rem; color: var(--text-2); line-height: 1.7; margin-bottom: 0.7rem; }
-    .review-card cite { font-style: normal; font-weight: 600; font-size: 0.85rem; }
+    .review-card:hover { border-color: rgba(47,207,154,0.45); transform: translateY(-3px); }
+    .review-card .q-mark {
+      position: absolute; top: 0.9rem; left: 1.3rem; font-family: Georgia, serif;
+      font-size: 4.2rem; line-height: 1; color: #2fcf9a; opacity: 0.22; pointer-events: none;
+    }
+    .review-card blockquote {
+      flex: 1; font-size: 0.98rem; color: var(--text); line-height: 1.85;
+      margin-bottom: 1.3rem; padding-left: 2.2rem;
+    }
+    .review-foot {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .review-avatar {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #2fcf9a, #1a9c78); color: #062a1d;
+      font-weight: 800; font-size: 1.15rem;
+    }
+    .review-card cite { display: block; font-style: normal; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.15rem; }
+    .stars { display: flex; gap: 2px; }
+    .stars svg { width: 14px; height: 14px; color: #f0bc5e; fill: #f0bc5e; }
 
     /* CTA */
     .cta-section { padding: 3rem 1.5rem 4.5rem; }
@@ -667,19 +687,48 @@
     </div>
     <div class="reviews-grid">
       <div class="review-card reveal">
-        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <blockquote>"תוך חודשיים ירדתי 5 קילו ועליתי במסת שריר. סתיו בנה לי תוכנית מדויקת שעבדה מהיום הראשון."</blockquote>
-        <cite>דניאל כ.</cite>
+        <span class="q-mark" aria-hidden="true">&rdquo;</span>
+        <blockquote>הגעתי אחרי כמה שנים בלי אימונים ולא ידעתי מאיפה להתחיל. סתיו התחיל איתי מהבסיס, הקפיד על טכניקה בכל תרגיל ולאט לאט הרגשתי איך אני מתחזק. מה שהכי עזר לי זה שהוא תמיד זמין לשאלות, גם מחוץ לאימונים.</blockquote>
+        <div class="review-foot">
+          <div class="review-avatar" aria-hidden="true">א</div>
+          <div>
+            <cite>אביאל ק.</cite>
+            <div class="stars" aria-label="5 כוכבים"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          </div>
+        </div>
       </div>
       <div class="review-card reveal">
-        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <blockquote>"אני מתאמנת עם סתיו כבר חצי שנה ולראשונה מרגישה שאני באמת מתקדמת. סבלני, מקצועי ויודע לדחוף בדיוק כמה שצריך."</blockquote>
-        <cite>נועה מ.</cite>
+        <span class="q-mark" aria-hidden="true">&rdquo;</span>
+        <blockquote>ניסיתי כמה פעמים להתאמן לבד ותמיד נתקעתי אחרי כמה שבועות. אצל סתיו קיבלתי תוכנית ברורה, מעקב קבוע ומישהו ששם לב מתי צריך לדחוף ומתי להוריד הילוך. בפעם הראשונה הצלחתי להתמיד לאורך זמן.</blockquote>
+        <div class="review-foot">
+          <div class="review-avatar" aria-hidden="true">י</div>
+          <div>
+            <cite>יובל ש.</cite>
+            <div class="stars" aria-label="5 כוכבים"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          </div>
+        </div>
       </div>
       <div class="review-card reveal">
-        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <blockquote>"הליווי האישי שלו ברמה אחרת — גם תזונה, גם אימונים, גם מעקב. שווה כל שקל."</blockquote>
-        <cite>אופיר ש.</cite>
+        <span class="q-mark" aria-hidden="true">&rdquo;</span>
+        <blockquote>מה שאהבתי אצל סתיו זה שהוא לא מוכר קסמים. הוא מסביר למה עושים כל דבר, התאים את התזונה לשגרה שלי והשינוי הגיע בהדרגה ובצורה בריאה. ממליץ בחום לכל מי שרוצה תהליך רציני.</blockquote>
+        <div class="review-foot">
+          <div class="review-avatar" aria-hidden="true">ב</div>
+          <div>
+            <cite>בן ו.</cite>
+            <div class="stars" aria-label="5 כוכבים"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <span class="q-mark" aria-hidden="true">&rdquo;</span>
+        <blockquote>חיפשתי מאמן שבאמת יתייחס אליי ולא רק יספור חזרות. סתיו מקשיב, שם לב לפרטים ומדייק את התוכנית לפי מה שאני מרגישה. אני יוצאת מכל אימון עם אנרגיות ומחכה כבר לבא.</blockquote>
+        <div class="review-foot">
+          <div class="review-avatar" aria-hidden="true">ס</div>
+          <div>
+            <cite>סיגל ד.</cite>
+            <div class="stars" aria-label="5 כוכבים"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
