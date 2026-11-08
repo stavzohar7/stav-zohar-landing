@@ -56,7 +56,7 @@
     .nav-brand { display: flex; align-items: center; gap: 0.6rem; }
     .nav-logo { height: 44px; width: 44px; object-fit: contain; border-radius: 0; background: transparent; border: none; box-shadow: none; }
     .nav-name { font-weight: 700; font-size: 1rem; }
-    .nav-links { display: flex; align-items: center; gap: 0.3rem; }
+    .nav-links { display: flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
     .nav-link {
       padding: 0.4rem 0.75rem; border-radius: 6px; font-size: 0.88rem;
       font-weight: 500; color: var(--text-2); transition: all 0.2s;
@@ -85,7 +85,7 @@
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a:hover { color: var(--green-light); }
 
-    @media (max-width: 768px) {
+    @media (max-width: 980px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
     }
@@ -113,6 +113,7 @@
     }
     .hero-slide.active { opacity: 1; transform: none; }
     .hero-slide.leaving { opacity: 0; transform: translateY(-22px); }
+    .hero-slide .l1, .hero-slide .l2 { text-wrap: balance; }
     .hero-slide .l1 { font-size: 0.72em; color: #fff; font-weight: 800; }
     .hero-slide .l2 {
       font-weight: 900; background: linear-gradient(90deg, #2fcf9a, #83e0b8 50%, #2fcf9a);
@@ -489,7 +490,7 @@
     }
     .nav-phone svg { width: 15px; height: 15px; }
     .nav-phone-mobile { display: none; }
-    @media (max-width: 768px) {
+    @media (max-width: 980px) {
       .nav-phone-mobile {
         display: flex; align-items: center; justify-content: center; width: 38px; height: 38px;
         border-radius: 50%; background: var(--green-dim); color: var(--green-light); margin-left: 0.5rem; margin-right: auto;
@@ -528,7 +529,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 480px) {
-      .hero h1 { font-size: 2.2rem; }
+      .hero h1 { font-size: 2rem; }
       .hero-btns, .cta-btns { flex-direction: column; align-items: stretch; }
       .btn { justify-content: center; }
       .footer-top { text-align: center; }
@@ -547,8 +548,8 @@
     </a>
     <div class="nav-links">
       <button class="nav-link" onclick="smoothScroll('about')">אודות</button>
-      <button class="nav-link" onclick="smoothScroll('pricing')">מחירון</button>
-      <button class="nav-link" onclick="smoothScroll('reviews')">ביקורות</button>
+      <button class="nav-link" onclick="smoothScroll('reviews')">מתאמנים ממליצים</button>
+      <button class="nav-link" onclick="smoothScroll('pricing')">חבילות אימונים</button>
       <button class="nav-link" onclick="smoothScroll('contact')">צור קשר</button>
       <a href="tel:0538202506" class="nav-phone" dir="ltr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>053-820-2506</a>
       <a href="https://wa.me/972538202506?text=היי סתיו, אשמח לשמוע על אימון ניסיון!" target="_blank" class="nav-cta">אימון ניסיון</a>
@@ -560,8 +561,8 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="mobileScroll(event,'about')">אודות</a>
-  <a href="#pricing" onclick="mobileScroll(event,'pricing')">מחירון</a>
-  <a href="#reviews" onclick="mobileScroll(event,'reviews')">ביקורות</a>
+  <a href="#reviews" onclick="mobileScroll(event,'reviews')">מתאמנים ממליצים</a>
+  <a href="#pricing" onclick="mobileScroll(event,'pricing')">חבילות אימונים</a>
   <a href="#contact" onclick="mobileScroll(event,'contact')">צור קשר</a>
   <a href="https://wa.me/972538202506?text=היי סתיו, אשמח לשמוע על אימון ניסיון!" target="_blank" onclick="closeMenu()">אימון ניסיון</a>
 </div>
@@ -571,16 +572,16 @@
     <img src="logo.png" alt="סתיו זוהר" class="hero-logo" />
     <div class="hero-tag">סתיו זוהר · מאמן כושר אישי</div>
     <h1 class="hero-rotator" id="heroRotator">
-      <span class="hero-slide active"><span class="l1">הגוף שלך יכול יותר</span><span class="l2">בואו נוכיח את זה</span></span>
-      <span class="hero-slide"><span class="l1">תוכנית אישית וליווי צמוד</span><span class="l2">עד לתוצאה שרציתם</span></span>
-      <span class="hero-slide"><span class="l1">לא עוד דיאטות קיצוניות</span><span class="l2">הרגלים שנשארים לתמיד</span></span>
-      <span class="hero-slide"><span class="l1">כל מסע מתחיל</span><span class="l2">באימון הראשון</span></span>
-      <span class="hero-slide"><span class="l1">חזקים יותר, בריאים יותר</span><span class="l2">בקצב שמתאים לכם</span></span>
+      <span class="hero-slide active"><span class="l1">הגוף שלך מסוגל ליותר</span><span class="l2">ואני כאן כדי להוכיח את זה</span></span>
+      <span class="hero-slide"><span class="l1">תוכנית אימונים שנבנית במיוחד בשבילך</span><span class="l2">וליווי צמוד עד התוצאה</span></span>
+      <span class="hero-slide"><span class="l1">בלי דיאטות קיצוניות ובלי קיצורי דרך</span><span class="l2">הרגלים שנשארים לתמיד</span></span>
+      <span class="hero-slide"><span class="l1">הצעד הראשון הוא החשוב ביותר</span><span class="l2">ואת השאר נעשה יחד</span></span>
+      <span class="hero-slide"><span class="l1">חזק יותר. בריא יותר. בטוח יותר.</span><span class="l2">בקצב שמתאים בדיוק לך</span></span>
     </h1>
     <p>אני עוזר לאנשים להגיע לגוף ולבריאות שהם רוצים — עם אימון מקצועי, תוכנית מותאמת ומעקב צמוד.</p>
     <div class="hero-btns">
       <a href="https://wa.me/972538202506?text=היי סתיו, אשמח לשמוע על אימון ניסיון!" target="_blank" class="btn btn-primary">קבעו אימון ניסיון</a>
-      <a href="#pricing" class="btn btn-outline">מחירון</a>
+      <a href="#process" class="btn btn-outline">איך זה עובד</a>
     </div>
     <div class="hero-trust">
       <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>ללא התחייבות</span>
@@ -601,7 +602,7 @@
       <div class="about-card reveal">
         <div class="about-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
         <h3>תוכנית מותאמת אישית</h3>
-        <p>אין אצלי תוכנית אחת לכולם. כל תוכנית נבנית לפי המטרות, הרמה והזמן שלך.</p>
+        <p>אצלי לכל מתאמן יש תוכנית מותאמת אישית אליו, שנבנית לפי המטרות, הרמה והזמן שלו.</p>
       </div>
       <div class="about-card reveal">
         <div class="about-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
@@ -658,10 +659,36 @@
   </div>
 </section>
 
+<section id="reviews">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">מתאמנים ממליצים</div>
+      <h2 class="section-title">מה אומרים עליי</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <blockquote>"תוך חודשיים ירדתי 5 קילו ועליתי במסת שריר. סתיו בנה לי תוכנית מדויקת שעבדה מהיום הראשון."</blockquote>
+        <cite>דניאל כ.</cite>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <blockquote>"אני מתאמנת עם סתיו כבר חצי שנה ולראשונה מרגישה שאני באמת מתקדמת. סבלני, מקצועי ויודע לדחוף בדיוק כמה שצריך."</blockquote>
+        <cite>נועה מ.</cite>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <blockquote>"הליווי האישי שלו ברמה אחרת — גם תזונה, גם אימונים, גם מעקב. שווה כל שקל."</blockquote>
+        <cite>אופיר ש.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="pricing">
   <div class="section-inner">
     <div class="reveal" style="text-align:center;">
-      <div class="section-tag">מחירון</div>
+      <div class="section-tag">חבילות אימונים</div>
       <h2 class="section-title">תוכניות כושר וליווי אישי</h2>
       <p class="section-sub" style="margin-left:auto;margin-right:auto;">בחרו את המסלול שמתאים לכם — ומתחילים</p>
     </div>
@@ -711,32 +738,6 @@
   </div>
 </section>
 
-<section id="reviews">
-  <div class="section-inner">
-    <div class="reveal" style="text-align:center;">
-      <div class="section-tag">ביקורות</div>
-      <h2 class="section-title">מה אומרים עליי</h2>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card reveal">
-        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <blockquote>"תוך חודשיים ירדתי 5 קילו ועליתי במסת שריר. סתיו בנה לי תוכנית מדויקת שעבדה מהיום הראשון."</blockquote>
-        <cite>דניאל כ.</cite>
-      </div>
-      <div class="review-card reveal">
-        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <blockquote>"אני מתאמנת עם סתיו כבר חצי שנה ולראשונה מרגישה שאני באמת מתקדמת. סבלני, מקצועי ויודע לדחוף בדיוק כמה שצריך."</blockquote>
-        <cite>נועה מ.</cite>
-      </div>
-      <div class="review-card reveal">
-        <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <blockquote>"הליווי האישי שלו ברמה אחרת — גם תזונה, גם אימונים, גם מעקב. שווה כל שקל."</blockquote>
-        <cite>אופיר ש.</cite>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="faq">
   <div class="section-inner">
     <div class="reveal" style="text-align:center;">
@@ -754,7 +755,7 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">מה כולל הליווי האישי?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="faq-a"><p>הליווי האישי כולל תוכנית אימונים מותאמת שמתעדכנת כל חודש, הנחיות תזונה מפורטות, מעקב שבועי אחרי ההתקדמות שלך, ותמיכה שוטפת בוואטסאפ לכל שאלה. הכל אונליין, בלי צורך להגיע פיזית.</p></div>
+        <div class="faq-a"><p>הליווי האישי כולל תוכנית אימונים מותאמת שמתעדכנת מדי תקופה בהתאם לצורך ולמטרות שלך, הנחיות תזונה מפורטות, מעקב שבועי אחרי ההתקדמות שלך, ותמיכה שוטפת בוואטסאפ לכל שאלה. הכל אונליין, בלי צורך להגיע פיזית.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">אפשר לבטל חבילה באמצע?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
