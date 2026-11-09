@@ -305,13 +305,53 @@
 
     .pricing-contact { text-align: center; margin-top: 2.25rem; }
     .pricing-contact p { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .pricing-contact a svg { width: 26px; height: 26px; flex-shrink: 0; }
     .pricing-contact a {
-      display: inline-block; padding: 0.75rem 2.25rem; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 2.25rem; border-radius: 999px;
       background: linear-gradient(135deg, #2fcf9a, #1a9c78); color: #062a1d;
       font-size: 1.5rem; font-weight: 800; letter-spacing: 0.03em;
       box-shadow: 0 0 28px rgba(47,207,154,0.3); transition: transform 0.2s;
     }
     .pricing-contact a:hover { transform: scale(1.03); }
+
+    /* Clickable packages → "interested?" popup → WhatsApp */
+    .pricing-card[data-plan] { cursor: pointer; transition: border-color 0.2s, transform 0.2s; }
+    .pricing-card[data-plan]:hover { border-color: rgba(47,207,154,0.45); transform: translateY(-3px); }
+    .pricing-card.blue[data-plan]:hover { border-color: rgba(91,156,245,0.5); }
+    .pricing-card.amber[data-plan]:hover { border-color: rgba(240,188,94,0.5); }
+    .pricing-card[data-plan] .price-row { cursor: pointer; }
+    .pricing-card[data-plan] .price-row:hover,
+    .pricing-card[data-plan] .price-row:focus-visible { background: var(--surface-2); outline: none; }
+    .pricing-hint {
+      display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+      margin-top: 0.9rem; font-size: 0.8rem; color: var(--text-3);
+    }
+    .pricing-hint svg { width: 14px; height: 14px; color: #25d366; }
+
+    .plan-modal {
+      position: fixed; inset: 0; z-index: 120; display: flex; align-items: center; justify-content: center;
+      padding: 1rem; background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); animation: waPop 0.2s ease;
+    }
+    .plan-modal[hidden] { display: none; }
+    .plan-box {
+      position: relative; width: min(380px, 100%); text-align: center;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+      padding: 2rem 1.5rem 1.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .plan-box .p-icon { width: 54px; height: 54px; border-radius: 14px; margin: 0 auto 1rem; }
+    .plan-box .p-icon svg { width: 26px; height: 26px; }
+    .plan-box h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .plan-box .plan-pick { font-size: 0.92rem; color: var(--text-2); margin-bottom: 1.4rem; min-height: 1.4em; }
+    .plan-wa {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;
+      padding: 0.85rem; border-radius: 12px; background: #25d366; color: #fff;
+      font-size: 1rem; font-weight: 700; transition: background 0.2s;
+    }
+    .plan-wa:hover { background: #1ebe5b; }
+    .plan-wa svg { width: 22px; height: 22px; }
+    .plan-cancel { margin-top: 0.6rem; padding: 0.55rem 1rem; font-size: 0.9rem; color: var(--text-3); }
+    .plan-cancel:hover { color: var(--text); }
+    .plan-x { position: absolute; top: 0.6rem; left: 0.8rem; font-size: 1.5rem; line-height: 1; color: var(--text-3); padding: 0.2rem 0.4rem; }
 
     /* REVIEWS */
     #reviews { background: var(--bg-alt); }
@@ -712,9 +752,9 @@
         <span class="q-mark" aria-hidden="true">&rdquo;</span>
         <blockquote>מה שאהבתי אצל סתיו זה שהוא לא מוכר קסמים. הוא מסביר למה עושים כל דבר, התאים את התזונה לשגרה שלי והשינוי הגיע בהדרגה ובצורה בריאה. ממליץ בחום לכל מי שרוצה תהליך רציני.</blockquote>
         <div class="review-foot">
-          <div class="review-avatar" aria-hidden="true">ב</div>
+          <div class="review-avatar" aria-hidden="true">ל</div>
           <div>
-            <cite>בן ו.</cite>
+            <cite>ליאם ב.</cite>
             <div class="stars" aria-label="5 כוכבים"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
           </div>
         </div>
@@ -723,9 +763,9 @@
         <span class="q-mark" aria-hidden="true">&rdquo;</span>
         <blockquote>חיפשתי מאמן שבאמת יתייחס אליי ולא רק יספור חזרות. סתיו מקשיב, שם לב לפרטים ומדייק את התוכנית לפי מה שאני מרגישה. אני יוצאת מכל אימון עם אנרגיות ומחכה כבר לבא.</blockquote>
         <div class="review-foot">
-          <div class="review-avatar" aria-hidden="true">ס</div>
+          <div class="review-avatar" aria-hidden="true">א</div>
           <div>
-            <cite>סיגל ד.</cite>
+            <cite>אבישג ד.</cite>
             <div class="stars" aria-label="5 כוכבים"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
           </div>
         </div>
@@ -743,7 +783,7 @@
     </div>
     <div class="pricing-grid">
 
-      <div class="pricing-card reveal">
+      <div class="pricing-card reveal" data-plan="אימון אישי">
         <div class="pricing-body">
           <div class="pricing-header">
             <div class="p-icon green"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M8 6.5v11"/><path d="M16 6.5v11"/></svg></div>
@@ -756,7 +796,7 @@
         </div>
       </div>
 
-      <div class="pricing-card blue reveal">
+      <div class="pricing-card blue reveal" data-plan="אימון זוגי">
         <div class="pricing-body">
           <div class="pricing-header">
             <div class="p-icon blue"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
@@ -768,7 +808,7 @@
         </div>
       </div>
 
-      <div class="pricing-card amber reveal">
+      <div class="pricing-card amber reveal" data-plan="ליווי אישי אונליין">
         <div class="pricing-body">
           <div class="pricing-header">
             <div class="p-icon amber"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2a1a05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div>
@@ -782,7 +822,10 @@
     </div>
     <div class="pricing-contact reveal">
       <p>לפרטים והרשמה</p>
-      <a href="tel:0538202506" dir="ltr">053-820-2506</a>
+      <a href="https://wa.me/972538202506?text=היי סתיו! אשמח לשמוע פרטים על חבילות האימונים 🙂" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.04c0-5.22 4.25-9.46 9.48-9.46 2.53 0 4.9.99 6.69 2.78a9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.47-9.46 9.47zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.05-1.59a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.18-5.9-3.34-8.05z"/></svg>
+        <span dir="ltr">053-820-2506</span>
+      </a>
     </div>
   </div>
 </section>
@@ -864,6 +907,20 @@
     <div class="footer-copy">&copy; 2025 סתיו זוהר — כל הזכויות שמורות</div>
   </div>
 </footer>
+
+<div class="plan-modal" id="planModal" hidden onclick="if (event.target === this) closePlan()">
+  <div class="plan-box" role="dialog" aria-modal="true" aria-labelledby="planTitle">
+    <button class="plan-x" onclick="closePlan()" aria-label="סגור">×</button>
+    <div class="p-icon" id="planIcon"></div>
+    <h3 id="planTitle"></h3>
+    <p class="plan-pick" id="planPick"></p>
+    <a class="plan-wa" id="planWa" href="#" target="_blank" rel="noopener" onclick="setTimeout(closePlan, 300)">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.04c0-5.22 4.25-9.46 9.48-9.46 2.53 0 4.9.99 6.69 2.78a9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.47-9.46 9.47zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.05-1.59a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.18-5.9-3.34-8.05z"/></svg>
+      כן, לשליחת הודעה בוואטסאפ
+    </a>
+    <button class="plan-cancel" onclick="closePlan()">לא עכשיו</button>
+  </div>
+</div>
 
 <div class="wa-teaser" id="waTeaser" hidden>
   <button class="wa-teaser-close" onclick="hideTeaser()" aria-label="סגור">×</button>
@@ -957,6 +1014,48 @@
       go((current + 1) % slides.length);
     }, 4000);
   })();
+
+  // ── Packages: click a card (or a specific row) → "interested?" popup → WhatsApp with a ready message ──
+  var planLastFocus = null;
+  function openPlan(card, row) {
+    var plan = card.dataset.plan;
+    var pick = '';
+    if (row) {
+      var label = row.querySelector('.price-label').cloneNode(true);
+      var badge = label.querySelector('.row-badge');
+      if (badge) badge.remove();
+      pick = label.textContent.trim() + ' · ' + row.querySelector('.price-value').textContent.trim();
+    }
+    document.getElementById('planIcon').className = card.querySelector('.p-icon').className;
+    document.getElementById('planIcon').innerHTML = card.querySelector('.p-icon').innerHTML;
+    document.getElementById('planTitle').textContent = 'מעוניינים ב' + plan + '?';
+    document.getElementById('planPick').textContent = pick || 'ייפתח לכם וואטסאפ עם הודעה מוכנה לסתיו';
+    var text = 'היי סתיו! אני מעוניין/ת ב' + plan + (pick ? ' — ' + pick : '') + '. אשמח לפרטים נוספים 🙂';
+    document.getElementById('planWa').href = 'https://wa.me/972538202506?text=' + encodeURIComponent(text);
+    planLastFocus = document.activeElement;
+    document.getElementById('planModal').hidden = false;
+    document.getElementById('planWa').focus();
+  }
+  function closePlan() {
+    var m = document.getElementById('planModal');
+    if (m.hidden) return;
+    m.hidden = true;
+    if (planLastFocus && planLastFocus.focus) planLastFocus.focus();
+  }
+  document.querySelectorAll('.pricing-card[data-plan]').forEach(function(card) {
+    var hint = document.createElement('div');
+    hint.className = 'pricing-hint';
+    hint.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>לחצו על חבילה לפרטים בוואטסאפ';
+    card.querySelector('.pricing-body').appendChild(hint);
+    card.querySelectorAll('.price-row').forEach(function(row) {
+      row.setAttribute('role', 'button');
+      row.setAttribute('tabindex', '0');
+      row.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPlan(card, row); }
+      });
+    });
+    card.addEventListener('click', function(e) { openPlan(card, e.target.closest('.price-row')); });
+  });
 
   // ── WhatsApp-style chat: collects interest, name and phone, then opens WhatsApp to Stav with it all filled in ──
   var WA_NUMBER = '972538202506';
@@ -1146,6 +1245,7 @@
   document.addEventListener('keydown', function(e) {
     if (e.key !== 'Escape') return;
     closeChat();
+    closePlan();
     document.getElementById('a11yPanel').hidden = true;
   });
 
